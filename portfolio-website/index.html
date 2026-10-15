@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Reyhan Mikola Ansori | Portfolio</title>
+  <meta name="description" content="Portfolio of Reyhan Mikola Ansori, a Computer Science student looking for a software development internship.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Marcellus+SC&family=Share+Tech+Mono&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div id="scene" aria-hidden="true"><canvas id="canvas"></canvas></div>
+
+  <div class="hud">
+    <div class="hud-top">
+      <div class="player">
+        <img class="avatar" src="assets/portrait.webp" alt="Portrait of Reyhan Mikola Ansori">
+        <div class="bars">
+          <div class="player-name">Reyhan Mikola Ansori</div>
+          <div class="player-class">
+            <span class="glitch" data-text="Class: Computer Science">Class: Computer Science</span><span class="cursor" aria-hidden="true"></span>
+          </div>
+          <div class="bar bar-health" role="img" aria-label="Health, full"><div class="bar-fill"></div></div>
+          <div class="bar bar-stamina" role="img" aria-label="Stamina"><div class="bar-fill"></div></div>
+        </div>
+      </div>
+      <div class="compass" id="compass" aria-hidden="true">
+        <div class="compass-scale"></div>
+      </div>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-label="Turn sound off">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path class="speaker" d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/>
+          <path class="waves" d="M15.5 9a4.5 4.5 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/>
+          <path class="cross" d="M16 9.5l5 5M21 9.5l-5 5"/>
+        </svg>
+      </button>
+    </div>
+
+    <button class="quest-tracker" id="questTracker" type="button" aria-label="Current goal: a software development internship. Open quests">
+      <span class="qt-title"><span class="diamond" aria-hidden="true"></span>The Apprentice's Road</span>
+      <span class="qt-step">Seeking an internship opportunity</span>
+      <span class="qt-sub">Open to development, data and infrastructure roles</span>
+    </button>
+
+    <div class="prompt">Click anywhere to open the menu</div>
+  </div>
+
+  <div id="menu" aria-hidden="true">
+    <nav class="rose" aria-label="Main menu">
+      <svg class="rose-art" viewBox="-100 -100 200 200" aria-hidden="true">
+        <polygon class="rose-point" data-panel="about" points="0,-96 -12,-12 0,0 12,-12"/>
+        <polygon class="rose-point" data-panel="projects" points="96,0 12,-12 0,0 12,12"/>
+        <polygon class="rose-point" data-panel="contact" points="0,96 12,12 0,0 -12,12"/>
+        <polygon class="rose-point" data-panel="skills" points="-96,0 -12,12 0,0 -12,-12"/>
+      </svg>
+      <button class="menu-item" data-panel="about" type="button" style="left:50%; top:9%">About<small class="menu-sub">(CV)</small></button>
+      <button class="menu-item" data-panel="projects" type="button" style="left:91%; top:50%">Quests<small class="menu-sub">(Projects)</small></button>
+      <button class="menu-item" data-panel="contact" type="button" style="left:50%; top:91%">Contact</button>
+      <button class="menu-item" data-panel="skills" type="button" style="left:9%; top:50%">Skills</button>
+    </nav>
+
+    <div class="panels">
+
+      <!-- About -->
+      <section class="panel" id="panel-about" tabindex="-1" aria-labelledby="about-title">
+        <img class="about-photo" src="assets/portrait.webp" alt="Reyhan Mikola Ansori">
+        <button class="back-btn" type="button" aria-label="Back to menu">←</button>
+        <h2 id="about-title">About</h2>
+        <a class="btn cv-btn" href="Reyhan-Mikola-Ansori-CV.pdf" download>Download CV (PDF)</a>
+        <p>I am a 5th semester Computer Science student with a solid foundation in programming, data structures, databases, and web development. Through coursework, I've worked with C, Java, Python, SQL, HTML/CSS, and Git, and I continue to build on these skills through personal projects.</p>
+        <p>I'm interested in software development and open to exploring different areas of the field, whether that's building applications, working with data, or supporting systems and infrastructure.</p>
+        <p>Currently seeking an internship where I can contribute to real projects and develop as a professional.</p>
+      </section>
+
+      <!-- Skills -->
+      <section class="panel" id="panel-skills" tabindex="-1" aria-labelledby="skills-title">
+        <button class="back-btn" type="button" aria-label="Back to menu">←</button>
+        <h2 id="skills-title"><span class="glitch" data-text="Class: Computer Science">Class: Computer Science</span></h2>
+        <div class="tree-title">Skill Tree</div>
+        <div class="sky" id="sky"></div>
+      </section>
+
+      <!-- Quests (projects) -->
+      <section class="panel" id="panel-projects" tabindex="-1" aria-labelledby="projects-title">
+        <button class="back-btn" type="button" aria-label="Back to menu">←</button>
+        <h2 id="projects-title">Quests<span class="subtitle">(Projects)</span></h2>
+
+        <div class="quest-group">In progress</div>
+
+        <details class="quest active">
+          <summary>
+            <span class="diamond" aria-hidden="true"></span>
+            <h3>The Apprentice's Road<small class="quest-sub">Software Development Internship</small></h3>
+            <span class="tag">In progress</span>
+            <span class="chevron" aria-hidden="true"></span>
+          </summary>
+          <div class="quest-body">
+            <p class="quest-intro">As a 5th semester Computer Science student, I'm looking for an internship where I can apply what I've learned, contribute to real projects and keep growing as a developer.</p>
+            <ol class="steps">
+              <li class="done">Complete four semesters of Computer Science coursework</li>
+              <li class="done">Build foundations in C, Java, Python and SQL</li>
+              <li class="done">Launch a personal portfolio website</li>
+              <li class="current">Secure a software development internship</li>
+              <li class="locked">Contribute to real-world projects in a professional team</li>
+            </ol>
+            <p class="quest-cta">Interested in working together? <a href="#" data-goto="contact">Get in touch</a></p>
+          </div>
+        </details>
+
+        <details class="quest active">
+          <summary>
+            <span class="diamond" aria-hidden="true"></span>
+            <h3>FundChain<small class="quest-sub">Blockchain Fundraising Platform</small></h3>
+            <span class="tag">In progress</span>
+            <span class="chevron" aria-hidden="true"></span>
+          </summary>
+          <div class="quest-body">
+            <p>A team project: a fundraising platform for BINUS students that uses blockchain as a tamper-proof record. Every completed donation is hashed with Keccak-256 and the hash is stored in a smart contract. An integrity checker re-hashes the database records and compares them with the on-chain hashes; if anything was altered, the campaign is frozen and fund withdrawals are locked.</p>
+            <p class="role"><span>My role:</span> Blockchain Integration Developer (relayer). I work on the relayer service that signs and submits donation hashes to the smart contract on Sepolia, so every verified donation gets a permanent on-chain record.</p>
+            <p class="muted">React · Vite · Tailwind · NestJS · Prisma · PostgreSQL (Supabase) · Solidity (Hardhat) · Sepolia · Vercel</p>
+            <div class="links">
+              <a href="https://fundchain-web.vercel.app" target="_blank" rel="noopener">Live demo</a>
+              <a href="https://github.com/k41ts/fundchain" target="_blank" rel="noopener">Source code</a>
+            </div>
+          </div>
+        </details>
+
+        <div class="quest-group">Completed projects</div>
+
+        <details class="quest">
+          <summary>
+            <span class="check" aria-hidden="true">✓</span>
+            <h3>Interactive RPG Portfolio<small class="quest-sub">This website</small></h3>
+            <span class="tag">Completed</span>
+            <span class="chevron" aria-hidden="true"></span>
+          </summary>
+          <div class="quest-body">
+            <p>A game-inspired portfolio that presents my background like an RPG: a HUD with health and stamina bars, a compass menu for navigation, a quest log for my projects and a scrollable constellation skill tree. The background loops through a sequence of photos where only the people in the scene move, and the whole layout adapts to desktop and mobile screens.</p>
+            <p class="muted">HTML · CSS · JavaScript · Canvas · SVG</p>
+          </div>
+        </details>
+
+        <details class="quest">
+          <summary>
+            <span class="check" aria-hidden="true">✓</span>
+            <h3>V-Phone<small class="quest-sub">Online Phone Store Website</small></h3>
+            <span class="tag">Completed</span>
+            <span class="chevron" aria-hidden="true"></span>
+          </summary>
+          <div class="quest-body">
+            <a class="site-preview" href="https://v-phone-reyhamikolaansori.netlify.app/" target="_blank" rel="noopener" aria-label="Open the V-Phone website">
+              <span class="browser-bar"><i></i><i></i><i></i><span class="browser-url">v-phone-reyhamikolaansori.netlify.app</span></span>
+              <span class="preview-hero">
+                <span class="preview-brand">V-<b>PHONE</b></span>
+                <span class="preview-tagline">Enjoy gaming with quality phones</span>
+                <span class="preview-pages">Home · Products · Promotions · About · Register</span>
+              </span>
+              <span class="preview-cta">Visit the website ↗</span>
+            </a>
+            <p>A first-year project: a multi-page storefront for a fictional phone retailer. It includes a homepage image slider, a best-sellers section, a product catalogue that filters phones by category (gaming, camera and budget), a promotions page with offers and membership perks, and a registration form with input validation.</p>
+            <p class="muted">HTML · CSS · JavaScript</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- Contact -->
+      <section class="panel" id="panel-contact" tabindex="-1" aria-labelledby="contact-title">
+        <button class="back-btn" type="button" aria-label="Back to menu">←</button>
+        <h2 id="contact-title">Contact</h2>
+        <p>Open to internship opportunities. Feel free to reach out.</p>
+        <ul class="contact-list">
+          <li>
+            <a href="mailto:reyhanmikolaansori@gmail.com">
+              <span class="contact-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7l8.5 6.5L20.5 7"/></svg>
+              </span>
+              <span class="contact-text"><small>Email</small><span>reyhanmikolaansori@gmail.com</span></span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/reyhan-mikola-ansori-3a97a4436" target="_blank" rel="noopener">
+              <span class="contact-icon"><img src="assets/contact/linkedin.webp" alt=""></span>
+              <span class="contact-text"><small>LinkedIn</small><span>Reyhan Mikola Ansori</span></span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/reyhanmikolaansori" target="_blank" rel="noopener">
+              <span class="contact-icon"><img src="assets/logos/git.webp" alt=""></span>
+              <span class="contact-text"><small>GitHub</small><span>github.com/reyhanmikolaansori</span></span>
+            </a>
+          </li>
+          <li>
+            <a href="https://wa.me/6282173494880" target="_blank" rel="noopener">
+              <span class="contact-icon"><img src="assets/contact/whatsapp.webp" alt=""></span>
+              <span class="contact-text"><small>WhatsApp</small><span>+62 821-7349-4880</span></span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="js/skills.js"></script>
+  <script src="js/scene.js"></script>
+  <script src="js/skill-tree.js"></script>
+  <script src="js/sound.js"></script>
+  <script src="js/menu.js"></script>
+</body>
+</html>
